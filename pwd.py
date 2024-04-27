@@ -1,6 +1,7 @@
 import pwinput
 from pyperclip import copy
 from hashlib import md5
+from termcolor import colored
 
 pwd = pwinput.pwinput("Enter primary password + website + username + year: \n")
 
@@ -10,5 +11,6 @@ symbols = {1: "!", 2: "@", 3: "#", 4: "$", 5: "%", 6: "^", 7: "&", 8: "*", 9: "(
 
 for key, value in symbols.items():
     h = h[:6] + h[6:16].replace(str(key), value)
+
 copy(h)
-print('Password copied.')
+print(colored('Password copied.', 'green'))
