@@ -1,3 +1,4 @@
+import argparse
 from hashlib import md5
 from pyperclip import copy
 from getpass import getpass
@@ -21,7 +22,14 @@ def replace(input_str):
     return input_str
 
 try:
-    pwd = getpass('Primary password: ')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--file', '-f', type=str)
+    args = parser.parse_args()
+
+    if args.file:
+        pwd = open(args.file, 'r').read().rstrip('\n')
+    else:
+        pwd = getpass('Primary password: ')
     web = input('Website: ')
     usr = input('Username: ')
     opt = input('Optional text: ')
