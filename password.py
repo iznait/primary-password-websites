@@ -30,6 +30,7 @@ try:
         pwd = open(args.file, 'r').read().rstrip('\n')
     else:
         pwd = getpass('Primary password: ')
+
     web = input('Website: ')
     usr = input('Username: ')
     opt = input('Optional text: ')
@@ -40,5 +41,5 @@ try:
     copy(p)
     print(colored('Password copied.', 'green'))
 
-except KeyboardInterrupt:
+except (EOFError, KeyboardInterrupt):
     print(colored("\nKeyboard interrupted", 'red'))
